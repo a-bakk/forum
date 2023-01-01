@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-asd123}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-asd123}
-      POSTGRES_DB: szte_rf1_estate_basis
+      POSTGRES_DB: forum_db
       PGDATA: /data/postgres
     volumes:
       - postgres:/data/postgres
