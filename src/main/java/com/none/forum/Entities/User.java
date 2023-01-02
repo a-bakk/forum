@@ -16,7 +16,7 @@ public class User implements Serializable {
     @Column(nullable = false)
     private String tag;
     @Column(nullable = false)
-    private Boolean isAdmin;
+    private boolean admin;
     @Column(nullable = false)
     private String password;
     @Column
@@ -24,5 +24,5 @@ public class User implements Serializable {
     @Column
     private String lastName;
     @Column(length = 64)
-    private String profilePicturePath;
+    private String profilePicture;
 }
