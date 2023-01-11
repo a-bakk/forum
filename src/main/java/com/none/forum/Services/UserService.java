@@ -31,4 +31,8 @@ public class UserService implements UserDetailsService {
         return new UserDetails(dao.find(id));
     }
 
+    public void deleteUser(UserDetails currentUser) {
+        this.dao.delete(currentUser.getId());
+    }
+
 }
