@@ -13,39 +13,51 @@
     <body>
         <div th:replace="~{fragments/nav :: nav}"></div>
 
+        <section th:if="${success}" class="bg-light p-3 px-5">
+            <div class="container">
+                <div th:text="${success}" class="alert alert-success text-center" />
+            </div>
+        </section>
+
+        <section th:if="${fail}" class="bg-light p-3 px-5">
+            <div class="container">
+                <div th:text="${fail}" class="alert alert-danger text-center" />
+            </div>
+        </section>
+
         <section class="p-5 bg-light mt-4">
             <div class="container">
                 <div class="row">
-                  <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                    <ul class="nav nav-pills mb-1 d-flex justify-content-between" id="pills-tab" role="tablist">
-                      <li class="nav-item" role="presentation">
-                          <button
-                              class="nav-link active text-uppercase fw-bold mx-5 text-dark"
-                              id="pills-login-tab"
-                              data-bs-toggle="pill"
-                              data-bs-target="#pills-login"
-                              type="button"
-                              role="tab"
-                              aria-controls="pills-login"
-                              aria-selected="true">
-                              Sign In
-                          </button>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                          <button
-                              class="nav-link text-uppercase fw-bold text-dark mx-5 text-dark"
-                              id="pills-register-tab"
-                              data-bs-toggle="pill"
-                              data-bs-target="#pills-register"
-                              type="button"
-                              role="tab"
-                              aria-controls="pills-register"
-                              aria-selected="false">
-                              Register
-                          </button>
-                      </li>
-                  </ul>
-                  </div>
+                    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                        <ul class="nav nav-pills mb-1 d-flex justify-content-between" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button
+                                    class="nav-link active text-uppercase fw-bold mx-5 text-dark"
+                                    id="pills-login-tab"
+                                    data-bs-toggle="pill"
+                                    data-bs-target="#pills-login"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="pills-login"
+                                    aria-selected="true">
+                                    Sign In
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button
+                                    class="nav-link text-uppercase fw-bold text-dark mx-5 text-dark"
+                                    id="pills-register-tab"
+                                    data-bs-toggle="pill"
+                                    data-bs-target="#pills-register"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="pills-register"
+                                    aria-selected="false">
+                                    Register
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
                             <div class="container">
@@ -84,17 +96,66 @@
                                         <div class="card border-0 shadow rounded-3 my-5">
                                             <div class="card-body p-4 p-sm-5">
                                                 <h5 class="card-title text-center mb-5 fw-light fs-5">Register</h5>
-                                                <form>
+                                                <form th:action="@{/register}" th:object="${newUser}" method="post">
                                                     <div class="form-floating mb-3">
-                                                        <input type="email" class="form-control" id="floatingInput2" placeholder="name@example.com" />
-                                                        <label for="floatingInput">Email address</label>
+                                                        <input
+                                                            type="email"
+                                                            class="form-control"
+                                                            id="reg-email"
+                                                            placeholder="johndoe@example.com"
+                                                            required
+                                                            th:field="*{email}" />
+                                                        <label for="reg-email">Email address</label>
                                                     </div>
                                                     <div class="form-floating mb-3">
-                                                        <input type="password" class="form-control" id="floatingPassword3" placeholder="Password" />
-                                                        <label for="floatingPassword">Password</label>
+                                                        <input type="text" class="form-control" placeholder="jdoe72" id="reg-tag" required th:field="*{tag}" />
+                                                        <label for="reg-tag">Tag</label>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            placeholder="John"
+                                                            id="reg-first-name"
+                                                            required
+                                                            th:field="*{firstName}" />
+                                                        <label for="reg-first-name">First Name</label>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            placeholder="Doe"
+                                                            id="reg-last-name"
+                                                            required
+                                                            th:field="*{lastName}" />
+                                                        <label for="reg-last-name">Last Name</label>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <input
+                                                            type="password"
+                                                            class="form-control"
+                                                            id="reg-password"
+                                                            placeholder="Password"
+                                                            required
+                                                            th:field="*{password}" />
+                                                        <label for="reg-password">Password</label>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <input
+                                                            type="password"
+                                                            class="form-control"
+                                                            id="reg-password-check"
+                                                            placeholder="Password Again"
+                                                            required
+                                                            th:field="*{passwordCheck}" />
+                                                        <label for="reg-password-check">Password Again</label>
+                                                    </div>
+                                                    <div class="d-grid text-center">
+                                                        <p class="text-muted">All fields are required.</p>
                                                     </div>
                                                     <div class="d-grid">
-                                                        <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Register</button>
+                                                        <input type="submit" class="btn btn-primary btn-login text-uppercase fw-bold" value="Register" />
                                                     </div>
                                                 </form>
                                             </div>

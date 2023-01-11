@@ -21,14 +21,9 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
-                /*.authorizeHttpRequests(auth ->{
-                    auth.antMatchers("/profile").hasRole("USER");
-                    auth.antMatchers("/admin").hasRole("ADMIN");
-                    auth.anyRequest().permitAll();
-                })*/
-                .formLogin().loginPage("/login")
+                .formLogin().loginPage("/auth")
                 .defaultSuccessUrl("/index",true)
-                .failureUrl("/login?error=true")
+                .failureUrl("/auth?error=true")
                 .and()
                 .userDetailsService(userDetailsService())
                 .headers(headers -> headers.frameOptions().sameOrigin())
