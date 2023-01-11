@@ -1,0 +1,2 @@
+INSERT INTO users (admin, email, first_name, last_name, password, profile_picture, tag) VALUES (false, 'user@email.com', 'John', 'Doe', '$2a$12$phBRcK.bDG.6jLthGprAw.zGKLjErxfnkYiuKgBouMIfbGnd42ezG', null, 'jdoe72');
+INSERT INTO users (admin, email, first_name, last_name, password, profile_picture, tag) VALUES (true, 'admin@email.com', 'Admin', 'User', '$2a$12$phBRcK.bDG.6jLthGprAw.zGKLjErxfnkYiuKgBouMIfbGnd42ezG', null, 'admin');
