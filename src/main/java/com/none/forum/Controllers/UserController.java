@@ -19,8 +19,9 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String profile(Model model) {
+    public String profile(@AuthenticationPrincipal UserDetails currentUser,Model model) {
         if (!AuthController.isAuthenticated()) return "redirect:/auth";
+        model.addAttribute("user", currentUser);
         model.addAttribute("active", "profile");
         return "profile";
     }
