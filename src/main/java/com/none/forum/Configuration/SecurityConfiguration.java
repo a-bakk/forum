@@ -22,7 +22,7 @@ public class SecurityConfiguration {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .formLogin().loginPage("/auth")
-                .defaultSuccessUrl("/index",true)
+                .defaultSuccessUrl("/profile",true)
                 .failureUrl("/auth?error=true")
                 .and()
                 .userDetailsService(userDetailsService())
