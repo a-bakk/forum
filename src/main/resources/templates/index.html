@@ -9,11 +9,209 @@
         <link rel="stylesheet" th:href="@{/css/style.css}" />
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
     </head>
-    <body>
 
+    <body class="bg-light">
         <div th:replace="~{fragments/nav :: nav}"></div>
 
-        Hello!
+        <section class="py-4 px-5">
+            <div class="container h-100">
+                <div class="row h-100">
+                    <div
+                        class="col-md-10 col-xl-8 text-center d-flex d-sm-flex d-md-flex justify-content-center align-items-center mx-auto justify-content-md-start align-items-md-center justify-content-xl-center">
+                        <div>
+                            <h2 class="text-uppercase fw-bold mb-3">Welcome to<br />lorem ipsum dolor sit</h2>
+                            <p class="mb-4">
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla voluptatum asperiores officiis placeat eaque nobis.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-2 px-5 mx-5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card mb-3">
+                            <div class="card-header pr-0 pl-0">
+                                <div class="row no-gutters align-items-center w-100">
+                                    <div class="col font-weight-bold pl-3">ThreadGroup Title</div>
+                                    <div class="d-none d-md-block col-6 text-muted">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-3">Replies</div>
+                                            <div class="col-6">Last update</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body py-3">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col">
+                                        <a href="javascript:void(0)" class="text-big font-weight-semibold" data-abc="true">Lorem ipsum dolor sit amet</a>
+                                    </div>
+                                    <div class="d-none d-md-block col-6">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-3">14</div>
+                                            <div class="col-6 align-items-center">
+                                                <div class="media-body flex-truncate ml-2">
+                                                    <a href="javascript:void(0)" class="d-block text-truncate" data-abc="true"
+                                                        >Lorem, ipsum dolor sit amet consectetur adipisicing.</a
+                                                    >
+                                                    <div class="text-muted small text-truncate">
+                                                        2d ago &nbsp;&middot;&nbsp;
+                                                        <a href="javascript:void(0)" class="text-muted" data-abc="true">John Doe</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="m-0" />
+                            <div class="card-body py-3">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col">
+                                        <a href="javascript:void(0)" class="text-big font-weight-semibold" data-abc="true">Lorem ipsum dolor sit</a>
+                                    </div>
+                                    <div class="d-none d-md-block col-6">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-3">12</div>
+                                            <div class="col-6 align-items-center">
+                                                <div class="media-body flex-truncate ml-2">
+                                                    <a href="javascript:void(0)" class="d-block text-truncate" data-abc="true"
+                                                        >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, aspernatur?</a
+                                                    >
+                                                    <div class="text-muted small text-truncate">
+                                                        1d ago &nbsp;&middot;&nbsp;
+                                                        <a href="javascript:void(0)" class="text-muted" data-abc="true">Carlos Doe</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="m-0" />
+                            <div class="card-body py-3">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col">
+                                        <a href="javascript:void(0)" class="text-big font-weight-semibold" data-abc="true">Lorem, ipsum dolor</a>
+                                    </div>
+                                    <div class="d-none d-md-block col-6">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-3">654</div>
+                                            <div class="col-6 align-items-center">
+                                                <div class="media-body flex-truncate ml-2">
+                                                    <a href="javascript:void(0)" class="d-block text-truncate" data-abc="true"
+                                                        >Lorem ipsum, dolor sit amet consectetur adipisicing.</a
+                                                    >
+                                                    <div class="text-muted small text-truncate">
+                                                        1d ago &nbsp;&middot;&nbsp;
+                                                        <a href="javascript:void(0)" class="text-muted" data-abc="true">Jimmy Doe</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-5 mx-5">
+            <div class="container mx-5">
+                <div class="row" style="background-color: #ffffff; width: 95%">
+                    <div class="col-md-2 py-3 text-center">
+                        <img
+                            src="#"
+                            class="rounded-circle mb-2"
+                            th:src="@{img/profile-pic-placeholder.png}"
+                            alt="profile picture"
+                            style="width: 100px; height: auto" />
+                        <div class="d-flex flex-column">
+                            <p class="text-muted">Tag</p>
+                            <p class="text-muted">Full name</p>
+                            <p class="text-muted">E-mail address</p>
+                        </div>
+                    </div>
+                    <div class="col-md-10 py-3">
+                        <div class="d-flex justify-content-between">
+                            <h5>Thread Title</h5>
+                            <p class="text-muted">posted at</p>
+                        </div>
+                        <div class="row">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde aperiam quas sint pariatur, vero obcaecati facere maxime itaque
+                                est incidunt sequi, deserunt nihil voluptas numquam cupiditate porro. Dignissimos nisi labore a nobis cum adipisci corporis
+                                tempore earum debitis fuga iste itaque corrupti consequatur, facilis illo sit eius, eveniet culpa ipsum repudiandae dolore!
+                                Iusto quo quos tempora quas facere ad distinctio dolore eos mollitia, labore sed ducimus ipsum? Rem sapiente sed quis, magnam
+                                consequatur veniam libero repellendus cupiditate laboriosam impedit error. Laboriosam earum nisi quia deleniti suscipit dolore,
+                                est voluptas fuga incidunt ipsa quisquam commodi quidem ipsam quam nesciunt inventore vero impedit expedita ipsum ea. Molestias
+                                molestiae quis nam adipisci tempora voluptates accusantium? Culpa delectus illum a rem porro ut esse error fuga voluptatibus
+                                ducimus non reprehenderit assumenda modi et sint ipsum, corporis repellendus ea sit, blanditiis perspiciatis natus nobis itaque.
+                                Aut facilis iste vitae neque fugiat deserunt tempore, porro repellat, eum assumenda dicta commodi sint, exercitationem
+                                explicabo? Expedita velit hic quo magnam amet quos libero minima aliquam quasi? Unde, soluta. Delectus, molestiae est
+                                consequuntur, odio impedit sapiente officiis sequi corrupti, reiciendis dolorum laborum soluta repudiandae nostrum. Saepe error
+                                sunt nam facilis dicta quas neque aperiam accusantium deserunt. Excepturi atque eos, blanditiis, at fuga quos, ab nisi voluptas
+                                unde autem ullam! Tempora assumenda maxime neque, corrupti eius quibusdam similique voluptatum aut incidunt commodi aspernatur,
+                                temporibus odit velit corporis itaque? Delectus ratione adipisci tempora officiis dolore aperiam. Est eius quos ipsum laborum
+                                assumenda, expedita possimus, quia perspiciatis similique delectus explicabo saepe a atque aut reprehenderit quae sequi placeat,
+                                nam praesentium? Quaerat dolores laboriosam minus odit impedit itaque quas atque quos, enim reiciendis quod eaque temporibus
+                                numquam sapiente blanditiis rerum, ea suscipit quis exercitationem deserunt! Temporibus, voluptas? Id cum voluptas doloribus
+                                sint maiores, facere similique sunt alias reiciendis voluptate repellendus perferendis numquam expedita?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-5 mx-5">
+            <div class="container mx-5">
+                <div class="row" style="background-color: #ffffff; width: 95%">
+                    <h5 class="py-2">New Thread</h5>
+                    <form action="#">
+                        <div class="form-floating mb-2">
+                            <select class="form-select" id="threadgroup-select" aria-label="Floating label select example">
+                                <option selected>selected</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <label for="threadgroup-select">Select a Thread Group</label>
+                        </div>
+                        <div class="mb-3">
+                            <label for="thread-title" class="form-label">Thread Title</label>
+                            <input type="text" class="form-control" id="thread-title" placeholder="Euronews" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="thread-text" class="form-label">Write your thoughts here</label>
+                            <textarea class="form-control" id="thread-text" rows="2"></textarea>
+                        </div>
+                        <input type="submit" class="btn btn-secondary" value="Post" />
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-5 mx-5">
+            <div class="container mx-5">
+                <div class="row" style="background-color: #ffffff; width: 95%">
+                    <h5 class="py-2">Reply to this thread</h5>
+                    <form action="#">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" placeholder="Leave a repply here" id="reply"></textarea>
+                            <label for="reply">Reply</label>
+                        </div>
+                        <input type="submit" class="btn btn-secondary" value="Post" />
+                    </form>
+                </div>
+            </div>
+        </section>
 
         <div th:replace="~{fragments/footer :: footer}"></div>
 
