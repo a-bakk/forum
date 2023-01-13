@@ -16,7 +16,7 @@ INSERT INTO users (admin, email, first_name, last_name, password, profile_pictur
 INSERT INTO users (admin, email, first_name, last_name, password, profile_picture, tag) VALUES (false, 'joanna89@email.com', 'Joanna', 'Griffith', '$2a$12$phBRcK.bDG.6jLthGprAw.zGKLjErxfnkYiuKgBouMIfbGnd42ezG', null, 'JOA12');
 INSERT INTO users (admin, email, first_name, last_name, password, profile_picture, tag) VALUES (false, 'matthew674@email.com', 'Matthew', 'Hunter', '$2a$12$phBRcK.bDG.6jLthGprAw.zGKLjErxfnkYiuKgBouMIfbGnd42ezG', null, 'MATTH61');
 
-INSERT INTO thread_groups (name) VALUES ('First ThreadGroup');
+INSERT INTO thread_groups (name) VALUES ('Refrigerator Houselled');
 INSERT INTO thread_groups (name) VALUES ('Unhallucinatory Exaudi');
 INSERT INTO thread_groups (name) VALUES ('Gymnotoka Goldthread');
 INSERT INTO thread_groups (name) VALUES ('Rogueling Dispunishable');

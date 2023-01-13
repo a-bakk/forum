@@ -2,6 +2,9 @@ package com.none.forum.Entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -16,10 +19,14 @@ public class Post implements Serializable {
     private Date timestamp;
     @Column(nullable = false)
     private String content;
-    @Column(nullable = false)
-    private Long userId;
-    @Column(nullable = false)
-    private Long threadId;
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "thread_id", referencedColumnName = "id")
+    private Thread thread;
     @Column
     private Long replyId;
 }
