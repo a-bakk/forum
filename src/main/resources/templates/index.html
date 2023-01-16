@@ -29,92 +29,35 @@
             </div>
         </section>
 
-        <section class="py-2 px-5 mx-5">
+        <section class="py-2 px-5 mx-5" th:each="threadGroup : ${threadGroups}">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card mb-3">
                             <div class="card-header pr-0 pl-0">
                                 <div class="row no-gutters align-items-center w-100">
-                                    <div class="col font-weight-bold pl-3">ThreadGroup Title</div>
+                                    <div class="col font-weight-bold pl-3" th:text="${threadGroup.key.getName()}">ThreadGroup Title</div>
                                     <div class="d-none d-md-block col-6 text-muted">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-3">Replies</div>
-                                            <div class="col-6">Last update</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body py-3">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col">
-                                        <a href="javascript:void(0)" class="text-big font-weight-semibold" data-abc="true">Lorem ipsum dolor sit amet</a>
-                                    </div>
-                                    <div class="d-none d-md-block col-6">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col-3">14</div>
-                                            <div class="col-6 align-items-center">
-                                                <div class="media-body flex-truncate ml-2">
-                                                    <a href="javascript:void(0)" class="d-block text-truncate" data-abc="true"
-                                                        >Lorem, ipsum dolor sit amet consectetur adipisicing.</a
-                                                    >
-                                                    <div class="text-muted small text-truncate">
-                                                        2d ago &nbsp;&middot;&nbsp;
-                                                        <a href="javascript:void(0)" class="text-muted" data-abc="true">John Doe</a>
-                                                    </div>
-                                                </div>
+                            <div th:each="thread : ${threadGroup.value}">
+                                <div class="card-body py-3">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col">
+                                            <a href="javascript:void(0)" class="text-big font-weight-semibold" data-abc="true" th:text="${thread.getName()}">Lorem ipsum dolor sit amet</a>
+                                        </div>
+                                        <div class="d-none d-md-block col-6">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-3" th:text="${thread.getReplies()}">14</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <hr class="m-0" />
-                            <div class="card-body py-3">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col">
-                                        <a href="javascript:void(0)" class="text-big font-weight-semibold" data-abc="true">Lorem ipsum dolor sit</a>
-                                    </div>
-                                    <div class="d-none d-md-block col-6">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col-3">12</div>
-                                            <div class="col-6 align-items-center">
-                                                <div class="media-body flex-truncate ml-2">
-                                                    <a href="javascript:void(0)" class="d-block text-truncate" data-abc="true"
-                                                        >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, aspernatur?</a
-                                                    >
-                                                    <div class="text-muted small text-truncate">
-                                                        1d ago &nbsp;&middot;&nbsp;
-                                                        <a href="javascript:void(0)" class="text-muted" data-abc="true">Carlos Doe</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr class="m-0" />
-                            <div class="card-body py-3">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col">
-                                        <a href="javascript:void(0)" class="text-big font-weight-semibold" data-abc="true">Lorem, ipsum dolor</a>
-                                    </div>
-                                    <div class="d-none d-md-block col-6">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col-3">654</div>
-                                            <div class="col-6 align-items-center">
-                                                <div class="media-body flex-truncate ml-2">
-                                                    <a href="javascript:void(0)" class="d-block text-truncate" data-abc="true"
-                                                        >Lorem ipsum, dolor sit amet consectetur adipisicing.</a
-                                                    >
-                                                    <div class="text-muted small text-truncate">
-                                                        1d ago &nbsp;&middot;&nbsp;
-                                                        <a href="javascript:void(0)" class="text-muted" data-abc="true">Jimmy Doe</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <hr class="m-0" />
                             </div>
                         </div>
                     </div>
@@ -124,7 +67,7 @@
 
         <section class="p-5 mx-5">
             <div class="container mx-5">
-                <div class="row" style="background-color: #ffffff; width: 95%">
+                <div class="row" style="background-color: #ffffff">
                     <div class="col-md-2 py-3 text-center">
                         <img
                             src="#"
@@ -172,7 +115,7 @@
 
         <section class="p-5 mx-5">
             <div class="container mx-5">
-                <div class="row" style="background-color: #ffffff; width: 95%">
+                <div class="row" style="background-color: #ffffff">
                     <h5 class="py-2">New Thread</h5>
                     <form action="#">
                         <div class="form-floating mb-2">
@@ -200,7 +143,7 @@
 
         <section class="p-5 mx-5">
             <div class="container mx-5">
-                <div class="row" style="background-color: #ffffff; width: 95%">
+                <div class="row" style="background-color: #ffffff">
                     <h5 class="py-2">Reply to this thread</h5>
                     <form action="#">
                         <div class="form-floating mb-3">
