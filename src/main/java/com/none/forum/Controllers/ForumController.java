@@ -1,5 +1,6 @@
 package com.none.forum.Controllers;
 
+import com.none.forum.Entities.Post;
 import com.none.forum.Entities.Thread;
 import com.none.forum.Entities.ThreadGroup;
 import com.none.forum.Models.ThreadWithStats;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,6 +43,16 @@ public class ForumController {
         model.addAttribute("threadGroups", threadGroupList);
         model.addAttribute("active", "index");
         return "index";
+    }
+
+    @GetMapping("/thread/{id}")
+    public String listPosts(Model model, @PathVariable(value = "id") Long id) {
+        Thread thread = this.forumService.findThreadById(id);
+        List<Post> posts = this.forumService.listByThread(thread);
+        model.addAttribute("posts", posts);
+        model.addAttribute("thread", thread);
+        model.addAttribute("active", "thread");
+        return "thread";
     }
 
 }

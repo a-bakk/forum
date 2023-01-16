@@ -9,6 +9,7 @@ import com.none.forum.Entities.ThreadGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,5 +31,11 @@ public class ForumService {
     }
     public Integer countReplies(Thread thread) {
         return this.postDao.countReplies(thread);
+    }
+    public List<Post> listByThread(Thread thread) {
+        return this.postDao.findByThread(thread);
+    }
+    public Thread findThreadById(Long id) {
+        return this.threadDao.find(id);
     }
 }
