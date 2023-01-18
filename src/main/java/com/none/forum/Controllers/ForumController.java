@@ -9,8 +9,8 @@ import com.none.forum.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,6 +41,8 @@ public class ForumController {
             threadGroupList.put(threadGroup, threadsWithStats);
         });
         model.addAttribute("threadGroups", threadGroupList);
+        model.addAttribute("newThread", new Thread());
+        model.addAttribute("authenticated", AuthController.isAuthenticated());
         model.addAttribute("active", "index");
         return "index";
     }
@@ -53,6 +55,16 @@ public class ForumController {
         model.addAttribute("thread", thread);
         model.addAttribute("active", "thread");
         return "thread";
+    }
+
+    @PostMapping("/create_new_thread")
+    public String newThread(@ModelAttribute Thread newThread, Model model, @RequestParam(value = "threadGroupId") Long threadGroupid,
+                            RedirectAttributes redirectAttributes) {
+        newThread.setHighlighted(false);
+        newThread.setThreadGroup(this.forumService.findThreadGroupById(threadGroupid));
+        this.forumService.createThread(newThread);
+        redirectAttributes.addFlashAttribute("success", "Thread has been created successfully!");
+        return "redirect:/index";
     }
 
 }

@@ -38,4 +38,13 @@ public class ForumService {
     public Thread findThreadById(Long id) {
         return this.threadDao.find(id);
     }
+    public List<Thread> getAllThreads() {
+        return this.threadDao.findAll();
+    }
+    public ThreadGroup findThreadGroupById(Long id) {
+        return this.threadGroupDao.find(id);
+    }
+    public void createThread(Thread thread) {
+        this.threadDao.create(thread);
+    }
 }
