@@ -64,20 +64,24 @@
           </div>
       </section>
 
-      <section class="p-5">
-        <div class="container">
-            <div class="row" style="background-color: #ffffff">
-                <h5 class="py-2">Reply to this thread</h5>
-                <form action="#">
-                    <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="Leave a reply here" id="reply"></textarea>
-                        <label for="reply">Reply</label>
+        <th:block th:if="${authenticated} eq true">
+            <section class="p-5">
+                <div class="container">
+                    <div class="row" style="background-color: #ffffff">
+                        <h5 class="py-2">Reply to this thread</h5>
+                        <form th:action="@{/reply}" method="post" th:object="${newPost}">
+                            <input type="hidden" th:name="userId" th:value="${uid}">
+                            <input type="hidden" th:name="threadId" th:value="${thread.getId()}">
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" placeholder="Leave a reply here" id="reply" th:field="*{content}"></textarea>
+                                <label for="reply">Reply</label>
+                            </div>
+                            <input type="submit" class="btn btn-secondary" value="Post" />
+                        </form>
                     </div>
-                    <input type="submit" class="btn btn-secondary" value="Post" />
-                </form>
-            </div>
-        </div>
-    </section>
+                </div>
+            </section>
+        </th:block>
 
         <div th:replace="~{fragments/footer :: footer}"></div>
 

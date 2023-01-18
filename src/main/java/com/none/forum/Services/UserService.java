@@ -11,13 +11,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService implements UserDetailsService {
-
     @Autowired
     private UserDao dao;
-
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = dao.findByEmail(username);
@@ -26,13 +23,13 @@ public class UserService implements UserDetailsService {
         }
         return new UserDetails(user);
     }
-
     public UserDetails getUserDetails(Long id) {
         return new UserDetails(dao.find(id));
     }
-
     public void deleteUser(UserDetails currentUser) {
         this.dao.delete(currentUser.getId());
     }
-
+    public User getUserById(Long id) {
+        return dao.find(id);
+    }
 }

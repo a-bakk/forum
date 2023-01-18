@@ -47,4 +47,7 @@ public class ForumService {
     public void createThread(Thread thread) {
         this.threadDao.create(thread);
     }
+    public void createReply(Post post) {
+        this.postDao.create(post);
+    }
 }
