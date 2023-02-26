@@ -1,8 +1,8 @@
 package com.none.forum.DAOs;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
+import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
+
 import java.io.Serializable;
 import java.util.List;
 

@@ -1,40 +1,31 @@
 package com.none.forum.Configuration;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
-import org.springframework.web.filter.GenericFilterBean;
+import org.springframework.web.filter.OncePerRequestFilter;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
-public class ApiKeyFilter extends GenericFilterBean {
+public class ApiKeyFilter extends OncePerRequestFilter {
 
     private static final String API_KEY = "XOYwD5cxVCWVUZeI1Gdv6Sq7bfQuXWQmh7YdzDvTABME5hu8PMIc66SMi7AYERmmkOQp65d55E14NBELxRPFNRrBtXntljr3NW9MbK6XQWzzjyJJQMcvasuYybtUTHu0";
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException {
-        HttpServletRequest httpRequest = (HttpServletRequest) request;
-        HttpServletResponse httpResponse = (HttpServletResponse) response;
-        String apiKey = httpRequest.getHeader("X-API-KEY");
-
-        HttpServletRequest req = (HttpServletRequest) request;
-        String path = req.getRequestURI();
+    protected void doFilterInternal(jakarta.servlet.http.HttpServletRequest request, jakarta.servlet.http.HttpServletResponse response, jakarta.servlet.FilterChain filterChain) throws ServletException, IOException, ServletException {
+        String apiKey = request.getHeader("X-API-KEY");
+        String path = request.getRequestURI();
 
         if (!path.startsWith("/api")) {
-            chain.doFilter(request, response);
+            filterChain.doFilter(request, response);
             return;
         }
 
         if (apiKey != null && apiKey.equals(API_KEY)) {
-            chain.doFilter(request, response);
+            filterChain.doFilter(request, response);
         } else {
-            httpResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid API key.");
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid API key.");
         }
     }
 }
