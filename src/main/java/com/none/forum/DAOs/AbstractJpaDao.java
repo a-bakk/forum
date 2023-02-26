@@ -27,8 +27,9 @@ public abstract class AbstractJpaDao<T extends Serializable> {
     }
 
     @Transactional
-    public void create(T entity) {
+    public T create(T entity) {
         entityManager.persist(entity);
+        return entity;
     }
 
     @Transactional

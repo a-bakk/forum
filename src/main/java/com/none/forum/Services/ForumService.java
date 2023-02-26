@@ -50,4 +50,18 @@ public class ForumService {
     public void createReply(Post post) {
         this.postDao.create(post);
     }
+
+    public ThreadGroup createThreadGroup(ThreadGroup threadGroup) {
+        return threadGroupDao.create(threadGroup);
+    }
+
+    public ThreadGroup updateThreadGroup(ThreadGroup threadGroup, Long id) {
+        ThreadGroup curr = threadGroupDao.find(id);
+        curr.setName(threadGroup.getName());
+        return threadGroupDao.update(curr);
+    }
+
+    public void deleteThreadGroup(Long id) {
+        this.threadGroupDao.delete(id);
+    }
 }
