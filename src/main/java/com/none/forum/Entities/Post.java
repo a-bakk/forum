@@ -1,10 +1,11 @@
 package com.none.forum.Entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 

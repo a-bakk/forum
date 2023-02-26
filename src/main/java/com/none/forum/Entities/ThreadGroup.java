@@ -1,6 +1,6 @@
 package com.none.forum.Entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import java.io.Serializable;
 

@@ -1,8 +1,9 @@
 package com.none.forum.DAOs;
 
 import com.none.forum.Entities.User;
-import jakarta.persistence.NoResultException;
 import org.springframework.stereotype.Repository;
+
+import javax.persistence.NoResultException;
 import java.util.ArrayList;
 import java.util.List;
 
