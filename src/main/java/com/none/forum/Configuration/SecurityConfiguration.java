@@ -1,6 +1,8 @@
 package com.none.forum.Configuration;
 
+import com.none.forum.Models.UserDetails;
 import com.none.forum.Services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -10,6 +12,8 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -17,13 +21,28 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfiguration {
+
+    @Autowired
+    private ApiKeyFilter apiKeyFilter;
+
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
+        return (request, response, authentication) -> {
+            if (!((UserDetails) authentication.getPrincipal()).isAccountNonLocked()) {
+                response.sendRedirect("/change-password");
+            } else {
+                response.sendRedirect("/profile");
+            }
+        };
+    }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
+                .addFilterBefore(apiKeyFilter, UsernamePasswordAuthenticationFilter.class)
                 .formLogin().loginPage("/auth")
                 .defaultSuccessUrl("/profile",true)
                 .failureUrl("/auth?error=true")
+                .successHandler(authenticationSuccessHandler())
                 .and()
                 .userDetailsService(userDetailsService())
                 .headers(headers -> headers.frameOptions().sameOrigin())
